@@ -16,8 +16,10 @@ private int capacity;
 		this.totalprice = 0.0;
 	}
 
-	public void addtocart(String productId,  double price, int quantity){
-		product temp = new product(productId,  price, quantity);
+	public void addtocart(String productId,  int quantity){
+		double price = 0.0;
+		String productname = null ;
+		product temp = new product(productId,productname, price, quantity);
 		this.totalprice += (price*quantity);
 		cart[itemcount] = temp;
 		itemcount+=1;
@@ -26,6 +28,9 @@ private int capacity;
 			increasesize();
 		}
 	}
+	
+	
+	
 
 	private void increasesize()
 	{

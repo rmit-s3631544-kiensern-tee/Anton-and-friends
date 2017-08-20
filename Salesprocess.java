@@ -1,10 +1,11 @@
 package supermarketsystem;
 
 
+import java.io.IOException;
 import java.util.*;	
 public class Salesprocess {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 
 		
 		String productid;
@@ -19,15 +20,13 @@ public class Salesprocess {
 	            System.out.print ("Enter the ID of the item: ");
 	            productid = scan.next();
 
-	            System.out.print ("Enter the unit price: ");
-	            price = scan.nextDouble();
-
 	            System.out.print ("Enter the quantity: ");
 	            quantity = scan.nextInt();
 
 	            // *** create a new item and add it to the cart
-	             
-	            cart1.addtocart( productid, price, quantity);
+	            product.readProduct(productid);
+	            
+	            //cart1.addtocart( productid,  quantity);
 
 
 
