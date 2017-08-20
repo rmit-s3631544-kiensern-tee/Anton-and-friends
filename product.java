@@ -3,6 +3,8 @@ package supermarketsystem;
 import java.io.File;
 import java.lang.*;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class product {
@@ -22,25 +24,54 @@ private int quantity;
 	
 	}
 	
-	public String readProduct(String ProductID) throws IOException{
+	public boolean readProduct() throws IOException{
 		
 		@SuppressWarnings("resource")
-		Scanner scan = new Scanner(new File("products.txt"));
-		scan.useDelimiter("-|\n");
-		this.productId = ProductID;
-		while(scan.hasNext())
-		{
-			String line = scan.nextLine();
-            if(line.contains(ProductID)){
-            	this.productName = scan.next();
-            	this.price = Double.valueOf(scan.next().substring(1));
-            	return line ;
-            }
-            	
+		Scanner sc = new Scanner(new File("products.txt"));;
+		List<String> line = new ArrayList<String>();
+		while (sc.hasNextLine()) {
+		  line.add(sc.nextLine());
 		}
-		return ProductID;
+
+		String[] productsname = line.toArray(new String[0]);
 		
+		@SuppressWarnings("resource")
+		Scanner scan = new Scanner(new File("price.txt"));
+		List<String> lines = new ArrayList<String>();
+		while (scan.hasNextLine()) {
+			  lines.add(scan.nextLine());
+			}
+
+		String[] priceline = lines.toArray(new String[0]);
 		
+		Double [] price = new Double[priceline.length];
+	    for(int i=0 ; i < priceline.length; i++){  
+		        price[i] = Double.parseDouble(priceline[i]);  
+	    }
+		
+		@SuppressWarnings("resource")
+		Scanner keyboard = new Scanner(System.in);	
+		System.out.print ("Enter the ID of the item: ");
+		int productid = keyboard.nextInt();
+
+        System.out.print ("Enter the quantity: ");
+        int quantity = keyboard.nextInt();
+		
+        int available = 0;
+        for(int i = 0 ; i <productsname.length; i++)
+        {
+        	if (productid == i)
+        	{
+        		this.productName = productsname[i];
+        		this.price = price[i];
+        		String prices = String.valueOf(this.price);
+        		available = 1;
+        		
+        	}
+        }
+        	if(available==0){
+        		System.out.print("Fail");
+        	}
 	}
 	
 	
