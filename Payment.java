@@ -48,7 +48,7 @@ public class Payment {
 		return false;
 	}
 
-	public static void payCard () { 
+	public static boolean payCard () { 
 		String name, num, date, choice;
 		Scanner scan = new Scanner(System.in);
 		Card cardOne = new Card();
@@ -78,6 +78,7 @@ public class Payment {
 				continue;
 			}
 		}
+		return true;
 	}
 
 }
