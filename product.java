@@ -9,22 +9,22 @@ import java.util.Scanner;
 
 public class product {
 
-private String productId;
+private int productId;
 private String productName;
 private double price;
 private int quantity;
 
 
-	public product(String productid, String productname,  double price, int quantity )
+	public product(int productid, String productname, double price, int quantity )
 	{
 		this.productId = productid;
-		this.price = price;
 		this.quantity = quantity;
 		this.productName = productname;
+		this.price = price;
 	
 	}
 	
-	public boolean readProduct() throws IOException{
+	/*public void readProduct(int productid,int quantity) throws IOException{
 		
 		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(new File("products.txt"));;
@@ -48,31 +48,26 @@ private int quantity;
 	    for(int i=0 ; i < priceline.length; i++){  
 		        price[i] = Double.parseDouble(priceline[i]);  
 	    }
-		
-		@SuppressWarnings("resource")
-		Scanner keyboard = new Scanner(System.in);	
-		System.out.print ("Enter the ID of the item: ");
-		int productid = keyboard.nextInt();
-
-        System.out.print ("Enter the quantity: ");
-        int quantity = keyboard.nextInt();
-		
+	    
         int available = 0;
         for(int i = 0 ; i <productsname.length; i++)
         {
         	if (productid == i)
         	{
+        		this.quantity = quantity;
         		this.productName = productsname[i];
         		this.price = price[i];
-        		String prices = String.valueOf(this.price);
         		available = 1;
+        		System.out.println(this.productName);
+        		System.out.println(this.price);
         		
         	}
         }
         	if(available==0){
         		System.out.print("Fail");
         	}
-	}
+		
+	}*/
 	
 	
 	public String toString()
@@ -88,7 +83,7 @@ private int quantity;
 	}
 	
 	
-	public String getID()
+	public int getID()
 	{
 		return this.productId;
 	}

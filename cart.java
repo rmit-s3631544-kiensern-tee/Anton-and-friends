@@ -16,10 +16,10 @@ private int capacity;
 		this.totalprice = 0.0;
 	}
 
-	public void addtocart(String productId,  int quantity){
-		double price = 0.0;
-		String productname = null ;
-		product temp = new product(productId,productname, price, quantity);
+	public void addtocart(int productId, String productname, double price,  int quantity){
+		product temp = new product(productId, productname, price,quantity);
+		price = temp.getPrice();
+		productname = temp.getName();
 		this.totalprice += (price*quantity);
 		cart[itemcount] = temp;
 		itemcount+=1;
