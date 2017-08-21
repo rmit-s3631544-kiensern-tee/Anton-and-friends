@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 public class product {
 
+private product products;
 private int productId;
 private String productName;
 private double price;
@@ -23,8 +24,11 @@ private int quantity;
 		this.price = price;
 	
 	}
+	public product(){
+		
+	}
 	
-	/*public void readProduct(int productid,int quantity) throws IOException{
+	public product readProduct(int productid, int quantity) throws IOException{
 		
 		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(new File("products.txt"));;
@@ -54,25 +58,24 @@ private int quantity;
         {
         	if (productid == i)
         	{
+        		this.productId = productid;
         		this.quantity = quantity;
         		this.productName = productsname[i];
         		this.price = price[i];
         		available = 1;
-        		System.out.println(this.productName);
-        		System.out.println(this.price);
-        		
+        		products = new product(this.productId, this.productName,this.price,this.quantity);        		
         	}
         }
         	if(available==0){
         		System.out.print("Fail");
         	}
-		
-	}*/
+		return products;
+	}
 	
 	
 	public String toString()
 	{
-		return String.format("ProductId : %s\nProductName: %s\nPrice : %8.2f\nQuantity : %d", 
+		return String.format("ProductId : %s\nProductName: %s\nPrice : %8.2f\nQuantity : %d\n", 
 				this.productId, this.productName, this.price, this.quantity);
 	}
 	
@@ -93,6 +96,10 @@ private int quantity;
 		return this.productName;
 	}
 	
+	public int getQuantity()
+	{
+		return this.quantity;
+	}
 	
 	
 	

@@ -1,5 +1,6 @@
 package supermarketsystem;
 
+import java.io.IOException;
 
 public class cart {
 
@@ -16,10 +17,11 @@ private int capacity;
 		this.totalprice = 0.0;
 	}
 
-	public void addtocart(int productId, String productname, double price,  int quantity){
-		product temp = new product(productId, productname, price,quantity);
-		price = temp.getPrice();
-		productname = temp.getName();
+	public void addtocart(int productid, int quantity) throws IOException{
+		product temp = new product();
+		product product = new product();
+		temp = product.readProduct(productid, quantity);
+		double price = temp.getPrice();
 		this.totalprice += (price*quantity);
 		cart[itemcount] = temp;
 		itemcount+=1;
