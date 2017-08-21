@@ -1,0 +1,6 @@
+abcd
+bbaa
+aabb
+ccdd
+eeff
+ffee
