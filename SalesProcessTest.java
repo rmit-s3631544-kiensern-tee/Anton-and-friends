@@ -8,22 +8,27 @@ import org.junit.Test;
 
 public class SalesProcessTest {
 
-	/*@Test
-	public void ProductIdtest() {
-		int id = product.setid("2");
-		assertEquals("2", id);
-	}
+	/*
 	@Test
-	public void ProductNametest() {
-		String name = product.setName("2");
-		assertEquals("2", name);
-	}*/
+	public void ProductIdtest() throws IOException {
+		int id = Salesprocess.main();
+		assertEquals(2, id);
+	}
+	*/
 	
+	/*
+	@Test
+	public void ProductNametest() throws IOException {
+		String name = Salesprocess.main();
+		assertEquals("2", name);
+	}
+	*/
+	/*
 	@Test
 	public void ProductPricetest() throws IOException {
-		double price = Salesprocess.main(10);
-		assertEquals(10, price);
-	}
+		double price = Salesprocess.main();
+		assertEquals(10, price, 0.001);
+	}*/
 	
 	/*
 	@Test
