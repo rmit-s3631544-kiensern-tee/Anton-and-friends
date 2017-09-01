@@ -11,8 +11,7 @@ public class Salesprocess {
 	}
 	public void sales() throws IOException {
 
-		int productid;
-		double price;
+		String productid;
 		int quantity;
 
 		
@@ -21,9 +20,9 @@ public class Salesprocess {
 	     	cart cart1 = new cart();
 	      do
 	          {
-	            System.out.print ("Enter the ID of the item: ");
-	            productid = scan.nextInt();
-	            System.out.print ("Enter the quantity: ");
+	            System.out.println("Enter the ID of the item: ");
+	            productid = scan.next();
+	            System.out.println("Enter the quantity: ");
 	            quantity = scan.nextInt();
 	            cart1.addtocart(productid,quantity);
 	            System.out.println(cart1);
@@ -32,7 +31,7 @@ public class Salesprocess {
 	            keepShopping = scan.next();
 	          }
 	      while (keepShopping.equals("y"));
-
+	     
 	    }
 		
 	}

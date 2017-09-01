@@ -1,5 +1,6 @@
 package supermarketsystem;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class cart {
@@ -8,6 +9,8 @@ private product[] cart;
 private int itemcount;
 private double totalprice;
 private int capacity;
+private double price;
+
 
 	public cart()
 	{
@@ -16,12 +19,12 @@ private int capacity;
 		this.itemcount = 0;
 		this.totalprice = 0.0;
 	}
-
-	public void addtocart(int productid, int quantity) throws IOException{
+	
+	public void addtocart(String productid, int quantity) throws IOException{
 		product temp = new product();
 		product product = new product();
 		temp = product.readProduct(productid, quantity);
-		double price = temp.getPrice();
+		price = temp.getPrice();
 		this.totalprice += (price*quantity);
 		cart[itemcount] = temp;
 		itemcount+=1;
@@ -29,10 +32,8 @@ private int capacity;
 		{
 			increasesize();
 		}
+		
 	}
-	
-	
-	
 
 	private void increasesize()
 	{

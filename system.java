@@ -2,25 +2,30 @@ package supermarketsystem;
 
 import java.io.IOException;
 import java.util.*;
-
 public class system {
 	
-private String user;
-
 	
 	public static void main(String[] args) throws IOException {
-		
-		@SuppressWarnings("resource")
-		Scanner keyboard = new Scanner(System.in);	
-		System.out.print ("Enter the ID of the item: ");
-		int productid = keyboard.nextInt();
-
-        System.out.print ("Enter the quantity: ");
-        int quantity = keyboard.nextInt();
-		
-        product product = new product();
-        product.readProduct(productid, quantity);
-		
+        Salesprocess sales = new Salesprocess();
+        System.out.println("1. Shopping ");
+        System.out.println("2. Login ");
+        System.out.print("Choose an option : ");
+        @SuppressWarnings("resource")
+		Scanner scan = new Scanner(System.in);
+        int function = scan.nextInt();
+        if (function == 1 )
+        {
+        	sales.sales();
+        }
+        else if (function == 2){
+        	Loginpage.login();
+        }
+        else{
+        	System.out.println(" error invalid option ");
+        }
+        
+        
+        
 	}
 	
 	

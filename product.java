@@ -1,6 +1,7 @@
 package supermarketsystem;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.lang.*;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,17 +10,16 @@ import java.util.Scanner;
 
 public class product {
 
-private product products;
-private int productId;
+product[] products = new product[10];
+product cart;
+private String productId;
 private String productName;
 private double price;
-private int quantity;
 
 
-	public product(int productid, String productname, double price, int quantity )
+	public product(String productid, String productname, double price )
 	{
 		this.productId = productid;
-		this.quantity = quantity;
 		this.productName = productname;
 		this.price = price;
 	
@@ -28,55 +28,35 @@ private int quantity;
 		
 	}
 	
-	public product readProduct(int productid, int quantity) throws IOException{
-		
-		@SuppressWarnings("resource")
-		Scanner sc = new Scanner(new File("products.txt"));;
-		List<String> line = new ArrayList<String>();
-		while (sc.hasNextLine()) {
-		  line.add(sc.nextLine());
-		}
-
-		String[] productsname = line.toArray(new String[0]);
-		
-		@SuppressWarnings("resource")
-		Scanner scan = new Scanner(new File("price.txt"));
-		List<String> lines = new ArrayList<String>();
-		while (scan.hasNextLine()) {
-			  lines.add(scan.nextLine());
+	
+	public product readProduct(String productid, int quantity){
+		productlist();
+		for (int i = 0; i < products.length; i++){
+			if(products[i].getID().compareTo(productid) == 0){
+				cart = products[i];
+				
 			}
-
-		String[] priceline = lines.toArray(new String[0]);
-		
-		Double [] price = new Double[priceline.length];
-	    for(int i=0 ; i < priceline.length; i++){  
-		        price[i] = Double.parseDouble(priceline[i]);  
-	    }
-	    
-        int available = 0;
-        for(int i = 0 ; i <productsname.length; i++)
-        {
-        	if (productid == i)
-        	{
-        		this.productId = productid;
-        		this.quantity = quantity;
-        		this.productName = productsname[i];
-        		this.price = price[i];
-        		available = 1;
-        		products = new product(this.productId, this.productName,this.price,this.quantity);        		
-        	}
-        }
-        	if(available==0){
-        		System.out.print("Fail");
-        	}
-		return products;
+		}
+		return cart;
 	}
 	
-	
+	public void productlist(){
+		products[0] = new product("p01", "onions",3.00);
+		products[1] = new product("p02", "milk", 4.00);
+		products[2] = new product("p03", "cookie", 3.99);
+		products[3] = new product("p04", "doritos",2.99 );
+		products[4] = new product("p05","yogurt",5.00);
+		products[5] = new product("p06", "chocolate", 1.99);
+		products[6] = new product("po7", "popcorn", 2.49);
+		products[7] = new product("p08", "coffee", 2.00);
+		products[8] = new product("p09", "donuts", 3.00);
+		products[9] = new product("p10", "rice", 14.00);
+	}
+
 	public String toString()
 	{
-		return String.format("ProductId : %s\nProductName: %s\nPrice : %8.2f\nQuantity : %d\n", 
-				this.productId, this.productName, this.price, this.quantity);
+		return String.format("ProductId : %s\nProductName: %s\nPrice : %8.2f\n", 
+				this.productId, this.productName, this.price);
 	}
 	
 	
@@ -86,7 +66,7 @@ private int quantity;
 	}
 	
 	
-	public int getID()
+	public String getID()
 	{
 		return this.productId;
 	}
@@ -96,17 +76,9 @@ private int quantity;
 		return this.productName;
 	}
 	
-	public int getQuantity()
-	{
-		return this.quantity;
-	}
-	
-	
-	
-	
-	
 
 	public static void main(String[] args) {
+
 
 	}
 
