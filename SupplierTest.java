@@ -10,9 +10,15 @@ public class SupplierTest {
 
 	@Test
 	public void test() throws FileNotFoundException {
-		Supplier supplier = new Supplier();
-		String suppliername = supplier.getsupplier(2);
-		assertEquals("aabb", suppliername);
+		Supplier[] supply = new Supplier[10];
+		Supplier supply1 = new Supplier();
+		supply[1] = new Supplier("s02","good lady", 30);
+		String expectedvalue = supply[1].toString(); 
+		String info = supply1.reducestock("s02", 70);
+		assertEquals(expectedvalue,info);
+    	
 	}
+	
+	
 
 }
