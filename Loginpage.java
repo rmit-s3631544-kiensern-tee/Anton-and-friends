@@ -1,59 +1,45 @@
 package supermarketsystem;
 
-import java.util.*;
-import java.io.*;
 public class Loginpage {
-
-	//Read the file and check the username and password with the file
-	public static void login() throws IOException  {	 
-		
-		@SuppressWarnings("resource")
-		Scanner sc = new Scanner(new File("username.txt"));
-		List<String> line = new ArrayList<String>();
-		while (sc.hasNextLine()) {
-		  line.add(sc.nextLine());
-		}
-
-		String[] username = line.toArray(new String[0]);
-		
-		@SuppressWarnings("resource")
-		Scanner scan = new Scanner(new File("password.txt"));
-		List<String> lines = new ArrayList<String>();
-		while (scan.hasNextLine()) {
-			  lines.add(scan.nextLine());
-			}
-
-		String[] password = lines.toArray(new String[0]);
-				
-		@SuppressWarnings("resource")
-		Scanner keyboard=new Scanner(System.in);
-				
-		System.out.println("Please enter the username:");
-		String inputuser=keyboard.nextLine();
-		System.out.println("Please enter the password:");
-		String inputpass=keyboard.nextLine();
-				
-		int temp=0;
-		for(int i=0;i<username.length;i++)
-		{
-			if(inputuser.equals(username[i])&&inputpass.equals(password[i]))
-			{
-				System.out.print("Success");
-				temp=1;
-				break;
-			}
-				
-				}
-					if(temp==0){
-						System.out.print("Fail");
-					
-				}
-			
+Loginpage[] loginlist  = new Loginpage[4];
+private String username;
+private String password;
 	
+	public Loginpage(){
+		loginarray();
+	}
+	
+	public void loginarray(){
+		loginlist[0] = new Loginpage("anton", "password123");
+		loginlist[1] = new Loginpage("bill","password223");
+		loginlist[2] = new Loginpage("kristen", "password111");
+		loginlist[3] = new Loginpage("tee","password333");
+	}
+	
+
+	public Loginpage(String user, String password){
+		this.username = user;
+		this.password = password;
+	}
+	public String loginuser(String username, String password){
+		String name = "fail";
+		for (int i =0; i < loginlist.length; i++){
+			if (loginlist[i].getuser().compareTo(username) == 0 
+					&& loginlist[i].getpassword().compareTo(password) == 0 ){
+					name = "success";
+			}
+		}
+		return name;
+	}
+	
+	public String getuser(){
+		return this.username;
+	}
+	
+	public String getpassword(){
+		return this.password;
 	}
 	
 	
 	
-	
-
-}
+}	

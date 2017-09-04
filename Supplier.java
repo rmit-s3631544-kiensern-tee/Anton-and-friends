@@ -18,7 +18,7 @@ private int stocklevel;
 		this.stocklevel = stocklevel2;
 	}
 	
-	public void supplierlist(){
+	public void supplierlist(){				// list of all the supplier and the stock level
 		supplier[0] = new Supplier("s01", "fresh onions", 100);
 		supplier[1] = new Supplier("s02", "good lady", 100);
 		supplier[2] = new Supplier("s03", "famous amos", 100);
@@ -32,36 +32,36 @@ private int stocklevel;
 	}
 	
 	
-	public String getsuppliername(String supplierid){
+	public String getsuppliername(String supplierid){		// return the supplier name 
 		int stock;
 		String name = null;
 		for (int i = 0; i< supplier.length; i++){
 			if (supplier[i].getID().compareTo(supplierid) == 0){
-				//name = supplier[i].getName();
-				//stock = supplier[i].getstock();
 				name = supplier[i].toString();
 			}
 		}
 		return name;
 	}
 	
-	public int updatestock(String supplierid){
+	public String updatestock(String supplierid){				// update the stock level of the product
 		int stocklevel = 0;
+		String name1 = null;
 		for (int i = 0; i< supplier.length; i++){
 			if (supplier[i].getID().compareTo(supplierid) == 0){
 				stocklevel = supplier[i].getstock();
 				String name = supplier[i].getName();
-				if (stocklevel < 50){
+				if (stocklevel < 50){						//if stock leve drop below 50 update the stock
 					stocklevel = 100;
 					supplier[i] = new Supplier(supplierid, name, stocklevel);
+					name1 = supplier[i].toString();
 				}	
 				}
 			}
-		return stocklevel;
+		return name1;
 		}
 	
 	
-	public String reducestock(String supplierid, int quantity){
+	public String reducestock(String supplierid, int quantity){		//reduce the stock level of the product
 		int stock = 0;
 		String info = null;
 		String name;
@@ -78,7 +78,7 @@ private int stocklevel;
 	}
 	
 	
-	public String supplyreport(){
+	public String supplyreport(){						//produce the report of all the supplier and the stock level
 		String contents = "Supply report\n";
 		for (int i = 0; i < supplier.length; i++){
 		      contents += supplier[i].toString() + "\n";

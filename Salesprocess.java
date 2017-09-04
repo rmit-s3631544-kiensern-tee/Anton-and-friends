@@ -1,27 +1,24 @@
 package supermarketsystem;
 
+import java.util.Scanner;
 
-import java.io.IOException;
-import java.util.*;	
 public class Salesprocess {
 
 	public Salesprocess()
 	{
 		
 	}
-	public void sales() throws IOException {
-
+	/*public  String sales(String productid, int quantity, String keepShopping)  {
 		String productid;
 		int quantity;
-
-		
+		@SuppressWarnings("resource")
 		Scanner scan = new Scanner(System.in);
-		String keepShopping = "y";
+		String keepShopping = "";
 	     	cart cart1 = new cart();
 	      do
 	          {
 	            System.out.println("Enter the ID of the item: ");
-	            productid = scan.next();
+	           productid = scan.next();
 	            System.out.println("Enter the quantity: ");
 	            quantity = scan.nextInt();
 	            cart1.addtocart(productid,quantity);
@@ -31,9 +28,18 @@ public class Salesprocess {
 	            keepShopping = scan.next();
 	          }
 	      while (keepShopping.equals("y"));
-	     
-	    }
+	      return cart1.toString();
+	    }*/
+	
 		
-	}
+	
+		public  String sales(String productid, int quantity, String keepShopping)  {
+			cart cart1 = new cart();
+	            cart1.addtocart(productid,quantity);
+	            System.out.println(cart1);
+	            
 
+	      return cart1.toString();
+	    }
 
+}

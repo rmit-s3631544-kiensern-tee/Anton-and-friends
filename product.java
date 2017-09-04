@@ -29,7 +29,7 @@ private double price;
 	}
 	
 	
-	public product readProduct(String productid, int quantity){
+	public product readProduct(String productid){
 		productlist();
 		for (int i = 0; i < products.length; i++){
 			if(products[i].getID().compareTo(productid) == 0){

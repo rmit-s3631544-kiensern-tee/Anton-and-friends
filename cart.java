@@ -20,10 +20,10 @@ private double price;
 		this.totalprice = 0.0;
 	}
 	
-	public void addtocart(String productid, int quantity) throws IOException{
+	public void addtocart(String productid, int quantity) {
 		product temp = new product();
 		product product = new product();
-		temp = product.readProduct(productid, quantity);
+		temp = product.readProduct(productid);
 		price = temp.getPrice();
 		this.totalprice += (price*quantity);
 		cart[itemcount] = temp;
@@ -34,6 +34,19 @@ private double price;
 		}
 		
 	}
+	
+	public String removefromcart(String productid, int quantity){
+		product temp = new product();
+		product product = new product();
+		temp = product.readProduct(productid);
+		price = temp.getPrice();
+		this.totalprice -= (price*quantity);
+		cart[itemcount] = cart[itemcount + 1];
+		itemcount-=1;
+		String name = cart[itemcount].toString();
+		return name;
+	}
+	
 
 	private void increasesize()
 	{
@@ -52,10 +65,8 @@ private double price;
       
       String contents = "\nShopping Cart\n";
       contents += "\nItem\n";
-
       for (int i = 0; i < itemcount; i++)
-          contents += cart[i].toString() + "\n";
-
+      contents += cart[i].toString() + "\n";
       contents += "\nTotal Price: AUD" + (totalprice);
       contents += "\n";
 
