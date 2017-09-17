@@ -9,30 +9,33 @@ import org.junit.Test;
 public class SupplierTest {
 
 	@Test
-	public void test() throws FileNotFoundException {
-		Supplier[] supply = new Supplier[10];
-		Supplier supply1 = new Supplier();
-		supply[1] = new Supplier("s02","good lady", 30);
-		String expectedvalue = supply[1].toString(); 
-		String info = supply1.reducestock("s02", 70);
-		System.out.println(info);
-		assertEquals(expectedvalue,info);
-    	
+	public void testdecreasestocklevel() {
+		Product product = new Product("p01", "milk", 2.00);
+		Supplier supplier1 = new Supplier("s01","good lady",product);
+		supplier1.reducestock("s01");
+		assertEquals(70,supplier1.getstock());
 	}
 	
 	@Test
-	public void test2(){
-		Supplier[] supply = new Supplier[10];
-		Supplier supply1 = new Supplier();
-		supply[1] = new Supplier("s02", "good lady", 100);
-		String expectedvalue = supply[1].toString();
-		String info = supply1.reducestock("s02", 70);
-		System.out.println(info);
-		info = supply1.updatestock("s02");
-		System.out.println(info);
-		assertEquals(expectedvalue,info);		
+	public void testupdatestocklevel(){
+		Product product = new Product("p01", "milk", 2.00);
+		Supplier supplier = new Supplier("s01","good lady",product);
+		supplier.setstocklevel(30);
+		supplier.updateStock("s01");
+		assertEquals(100, supplier.getstock());
 	}
 	
-	
+	@Test
+	public void testgetname(){
+		Product product = new Product("p01", "milk", 2.00);
+		Supplier supplier1 = new Supplier("s01","good lady",product);
+		assertEquals("good lady", supplier1.getName());
+	}
 
+	@Test
+	public void testgetproduct(){
+		Product product = new Product("p01", "milk", 2.00);
+		Supplier supplier1 = new Supplier("s01","good lady",product);
+		assertEquals(product, supplier1.getProduct());
+	}
 }
