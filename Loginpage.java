@@ -1,45 +1,42 @@
 package supermarketsystem;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.*;
 public class Loginpage {
-Loginpage[] loginlist  = new Loginpage[4];
-private String username;
-private String password;
 	
-	public Loginpage(){
-		loginarray();
+	private String username;
+	private String password;
+	private List <Employee> employeelist = new ArrayList<>();
+	
+	
+	public void addEmployee(Employee employee){
+		employeelist.add(employee);
 	}
 	
-	public void loginarray(){
-		loginlist[0] = new Loginpage("anton", "password123");
-		loginlist[1] = new Loginpage("bill","password223");
-		loginlist[2] = new Loginpage("kristen", "password111");
-		loginlist[3] = new Loginpage("tee","password333");
-	}
-	
-
-	public Loginpage(String user, String password){
-		this.username = user;
-		this.password = password;
-	}
-	public String loginuser(String username, String password){
-		String name = "fail";
-		for (int i =0; i < loginlist.length; i++){
-			if (loginlist[i].getuser().compareTo(username) == 0 
-					&& loginlist[i].getpassword().compareTo(password) == 0 ){
-					name = "success";
-			}
+	public boolean login (String username ,String password){
+		for (int i = 0; i < employeelist.size(); i++){
+			 if (employeelist.get(i).getUsername().equals(username) &&
+					 employeelist.get(i).getPassword().equals(password)){
+				 return true;
+			 }
 		}
-		return name;
+		return false;
 	}
 	
-	public String getuser(){
-		return this.username;
+	public void displaymenu(){
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Enter Username : ");
+		username = scan.next();
+		System.out.println("Enter Password : ");
+		password = scan.next();
+		boolean success = login(username,password);
+		if (success == true){
+			System.out.println("Login successful ");
+		}
+		else if (success == false){
+			System.out.println("Incorrect username or password ");
+		}
 	}
-	
-	public String getpassword(){
-		return this.password;
-	}
-	
-	
 	
 }	
