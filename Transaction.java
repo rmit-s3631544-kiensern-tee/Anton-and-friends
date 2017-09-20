@@ -38,8 +38,6 @@ public class Transaction1 {
 								break;
 							} else if (choice1.equals("n")) {
 								System.out.println("Please Enter Correct Product.");
-								//System.out.println("??");
-								//break;
 								continue;
 							} else {
 								System.out.println("You have entered an invalid option.");
