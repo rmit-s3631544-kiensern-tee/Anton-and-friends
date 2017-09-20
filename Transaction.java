@@ -10,7 +10,7 @@ public class Transaction1 {
 		String choice1;
 		int quantity;
 		int choice;
-		int test = 0;
+		int loop = 0;
 		
 		Scanner scan = new Scanner(System.in);
 		Scanner scan1 = new Scanner(System.in);
@@ -22,7 +22,7 @@ public class Transaction1 {
 			System.out.println("Choice: ");
 			cart cart1 = new cart();
 			choice = scan.nextInt();
-			while (test == 0) {
+			while (loop == 0) {
 				if ((choice == 1) || (choice == 2)) {
 					if (choice == 1) {
 						System.out.println("Please Enter the product ID: ");
@@ -48,8 +48,6 @@ public class Transaction1 {
 					} else if (choice == 2) {
 						System.out.println("Finish and Pay");
 						shop = "n";					
-					} else if (choice == 0) {
-						break;
 					} else {
 						continue;
 					}
