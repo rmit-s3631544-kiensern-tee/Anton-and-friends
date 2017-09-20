@@ -7,7 +7,7 @@ public class Employee {
 	private String job;
 	private String username;
 	private String password;
-
+	
 	public Employee(String id, String name, String job, String username, String password){
 		this.id = id;
 		this.name = name;
@@ -35,7 +35,6 @@ public class Employee {
 	public String getPassword(){
 		return password;
 	}
-	
 	
 	
 }

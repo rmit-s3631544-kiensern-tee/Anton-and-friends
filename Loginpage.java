@@ -7,8 +7,7 @@ public class Loginpage {
 	
 	private String username;
 	private String password;
-	private List <Employee> employeelist = new ArrayList<>();
-	
+	private List <Employee> employeelist;
 	
 	public void addEmployee(Employee employee){
 		employeelist.add(employee);

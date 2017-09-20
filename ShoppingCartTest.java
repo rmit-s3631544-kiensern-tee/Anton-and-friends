@@ -7,7 +7,7 @@ import org.junit.Test;
 public class ShoppingCartTest {
 
 	@Test
-	public void testTotal() {
+	public void testTotal(){
 		ShoppingCart cart = new ShoppingCart();
 		Product product1 = new Product("p01", "milk", 2);
 		product1.setQuantity(2);
@@ -34,13 +34,12 @@ public class ShoppingCartTest {
 		ShoppingCart cart = new ShoppingCart();
 		Product product1 = new Product("p01", "milk", 2);
 		Product product2 = new Product("p02", "coffee",3.50);
-		cart.addProduct(product2);
 		cart.addProduct(product1);
+		cart.addProduct(product2);
 		cart.deleteProduct("p02");
 		assertEquals(1,cart.getCartnumber());
 		assertEquals(2,cart.getTotal(),0);
 	}
-	
 	
 	@Test
 	public void addoffer(){
@@ -51,7 +50,6 @@ public class ShoppingCartTest {
 		product1.setQuantity(3);
 		cart.addProduct(product1);
 		assertEquals(4,product1.calculateCost(),0);
-		
 	}
 	
 	@Test
@@ -74,5 +72,15 @@ public class ShoppingCartTest {
 		cart.addProduct(product1);
 		assertEquals(1.40,product1.calculateCost(),0);
 	}
-
+	
+	
+	@Test
+	public void Testdeleteitemwithid(){
+		ShoppingCart cart = new ShoppingCart();
+		cart.addProductwithid("p01", 2);
+		assertEquals(4, cart.getTotal(),0);
+	}
+	
+	
+	
 }

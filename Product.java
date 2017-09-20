@@ -1,10 +1,8 @@
 package supermarketsystem;
 
+import java.util.ArrayList;
+import java.util.List;
 
-/**
- * @author Kien Sern
- *
- */
 public class Product {
 	
 	private String id;
@@ -15,13 +13,28 @@ public class Product {
 	private double totalprice;
 	private double discount = 0;
 	private double freeitem = 0;
+	private List<Product> productlist;
+	private Product product;
 	
 	public Product(String id, String name, double price){
 		this.id = id;
 		this.name = name;
 		this.price = price;
 		this.stocklevel = 30;
+	}
 	
+	public Product(){
+		productlist = new ArrayList<>();
+		Product product1 = new Product("p01", "milk", 2.00);
+		Product product2 = new Product("p02", "coffee", 3.50);
+		Product product3 = new Product("p03", "rice", 15.00);
+		productlist.add(product1);
+		productlist.add(product2);
+		productlist.add(product3);
+	}
+	
+	public List<Product> getProductlist(){
+		return productlist;
 	}
 	
 	public int getQuantity(){
@@ -89,5 +102,10 @@ public class Product {
 	
 	public double getfreeitem(){
 		return freeitem;
+	}
+	
+	public String toString(){
+		return String.format("ProductId : %s\nProductName: %s\nPrice : %8.2f\n", 
+				this.id, this.name, this.price);
 	}
 }
