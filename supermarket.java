@@ -30,9 +30,9 @@ public class supermarket {
 							int choice2;
 							boolean employee = true;
 							System.out.println("Select your choice : ");
-							System.out.println("1. Login ");
+							System.out.println("1. delete item ");
 							choice2 = scan.nextInt();
-							System.out.println("2. Start Shopping ");
+							System.out.println("2. check supplier");
 							choice2 = scan.nextInt();
 							while(employee == true){
 								if (choice2 == 1 ){
