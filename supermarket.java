@@ -9,6 +9,7 @@ public class supermarket {
 		ShoppingCart cart = new ShoppingCart();
 		Loginpage Login = new Loginpage();
      	Payment pay = new Payment();
+     	Supplier supplier = new Supplier();
 		int choice;
 		do {
 			System.out.println("Select your choice : ");
@@ -26,7 +27,23 @@ public class supermarket {
 							Login.logout();
 						}
 						else{
-							cart.deletemenu();
+							int choice2;
+							boolean employee = true;
+							System.out.println("Select your choice : ");
+							System.out.println("1. Login ");
+							choice2 = scan.nextInt();
+							System.out.println("2. Start Shopping ");
+							choice2 = scan.nextInt();
+							while(employee == true){
+								if (choice2 == 1 ){
+									cart.deletemenu();
+									employee = false;
+								}else if (choice2 == 2){
+									supplier.menu();
+									employee = false;
+								}
+							}
+							
 						}
 						if (Login.getlogout() == true){
 							break;
